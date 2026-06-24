@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Проверка сертификата | Smart Management</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Проверка сертификата Smart Management">
+        <img class="brand-logo" src="assets/smart-management-logo.png" alt="Smart Management" />
+        <span>
+          <strong>Smart Management</strong>
+          <small>Проверка сертификатов</small>
+        </span>
+      </a>
+      <nav class="header-actions">
+        <a class="ghost-link" href="#verify">Проверить сертификат</a>
+        <a class="ghost-link" href="#teacher">Для учителей</a>
+        <a class="primary-link" href="https://smart-management.uz/">Главное меню</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Публичная проверка</p>
+          <h1>Проверка сертификатов Smart Management</h1>
+          <p>
+            Введите номер сертификата. На странице проверки отображаются данные участника,
+            тема курса, дата обучения и срок действия сертификата.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#verify">Проверить сертификат</a>
+            <a class="button secondary" href="https://smart-management.uz/">Вернуться в главное меню</a>
+          </div>
+        </div>
+        <aside class="verification-card">
+          <span class="status-pill">Пример проверки</span>
+          <h2>Диана Маннанова</h2>
+          <dl>
+            <div>
+              <dt>Тема курса</dt>
+              <dd>Аудитор СМК по ISO 9001</dd>
+            </div>
+            <div>
+              <dt>Дата курса</dt>
+              <dd>01-05.01.2026</dd>
+            </div>
+            <div>
+              <dt>Действует до</dt>
+              <dd>01.01.2029</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="section" id="verify">
+        <div class="section-heading">
+          <p class="eyebrow">Для учеников</p>
+          <h2>Проверить сертификат</h2>
+          <p>Введите номер сертификата, например `SM-2026-0001`.</p>
+        </div>
+
+        <form class="lookup-form" id="lookupForm">
+          <label>
+            Номер сертификата
+            <input name="certificateId" type="text" value="SM-2026-0001" required />
+          </label>
+          <button class="button primary" type="submit">Проверить</button>
+        </form>
+      </section>
+
+      <section class="verify-screen" id="verifyScreen" hidden>
+        <article class="verify-card">
+          <span class="status-pill" id="verifyStatus">Сертификат действителен</span>
+          <h1 id="verifyName"></h1>
+          <dl>
+            <div>
+              <dt>Номер сертификата</dt>
+              <dd id="verifyId"></dd>
+            </div>
+            <div>
+              <dt>Тема курса</dt>
+              <dd id="verifyCourse"></dd>
+            </div>
+            <div>
+              <dt>Дата курса</dt>
+              <dd id="verifyCourseDate"></dd>
+            </div>
+            <div>
+              <dt>Дата окончания действия сертификата</dt>
+              <dd id="verifyValidUntil"></dd>
+            </div>
+          </dl>
+          <div class="verify-actions">
+            <a class="button primary" href="https://smart-management.uz/">Вернуться в главное меню</a>
+            <a class="button secondary" href="#verify">Проверить другой сертификат</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="section teacher-section" id="teacher" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Закрытый раздел</p>
+          <h2>Кабинет учителя</h2>
+          <p>Создание сертификатов и полный реестр доступны только после входа.</p>
+        </div>
+
+        <form class="teacher-login" id="teacherLoginForm">
+          <label>
+            Пароль учителя
+            <input name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <button class="button primary" type="submit">Войти</button>
+          <p class="form-message" id="loginMessage"></p>
+        </form>
+
+        <div class="teacher-panel" id="teacherPanel" hidden>
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Администрирование</p>
+              <h2>Выдать сертификат</h2>
+            </div>
+            <button class="button secondary" id="logoutButton" type="button">Выйти</button>
+          </div>
+
+          <form class="certificate-form" id="certificateForm">
+            <label>
+              Имя и фамилия
+              <input name="fullName" type="text" value="Диана Маннанова" required />
+            </label>
+            <label>
+              Тема курса
+              <input name="courseTopic" type="text" value="Аудитор СМК по ISO 9001" required />
+            </label>
+            <label>
+              Дата курса
+              <input name="courseDate" type="text" value="01-05.01.2026" required />
+            </label>
+            <label>
+              Дата окончания действия сертификата
+              <input name="validUntil" type="text" value="01.01.2029" required />
+            </label>
+            <button class="button primary" type="submit">Сформировать сертификат</button>
+          </form>
+
+          <article class="certificate" id="certificate">
+            <div class="certificate-border">
+              <div class="certificate-ribbon" aria-hidden="true">
+                <span>Training of specialists demanded all over the world!</span>
+              </div>
+              <div class="certificate-top">
+                <img class="certificate-logo" src="assets/smart-management-logo.png" alt="Smart Management" />
+                <div class="certificate-number-row">
+                  <span>Номер сертификата</span>
+                  <b id="certificateNumber">SM-2026-0001</b>
+                </div>
+              </div>
+              <p class="certificate-kicker">Certificate of Completion</p>
+              <h2>Сертификат</h2>
+              <p class="certificate-standard">ISO Training Certificate · Smart Management</p>
+              <p>Настоящим подтверждается, что</p>
+              <strong id="certificateName">Диана Маннанова</strong>
+              <p>успешно прошел(ла) курс</p>
+              <h3 id="certificateCourse">Аудитор СМК по ISO 9001</h3>
+              <div class="certificate-meta">
+                <span>Дата курса: <b id="certificateDate">01-05.01.2026</b></span>
+                <span>Действует до: <b id="certificateValidUntil">01.01.2029</b></span>
+              </div>
+              <div class="certificate-footer">
+                <div class="certificate-signature">
+                  <span class="signature-line"></span>
+                  <small>Директор / Smart Management</small>
+                </div>
+                <div class="certificate-qr">
+                  <img id="certificateQr" alt="QR для проверки сертификата" />
+                  <small>Сканируйте для проверки подлинности</small>
+                </div>
+                <div class="certificate-signature">
+                  <span class="signature-line"></span>
+                  <small>Преподаватель / Smart Management</small>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <div class="certificate-actions">
+            <a class="button secondary" id="publicLink" href="#certificate/SM-2026-0001">Открыть страницу проверки</a>
+            <button class="button secondary" id="printCertificate" type="button">Скачать PDF</button>
+          </div>
+
+          <div class="registry-block">
+            <div class="section-heading">
+              <p class="eyebrow">Только для учителей</p>
+              <h2>Полный реестр сертификатов</h2>
+            </div>
+            <div class="registry-tools">
+              <input id="registrySearch" type="search" placeholder="Поиск по имени, курсу или номеру" />
+            </div>
+            <div class="registry-list" id="registryList"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
